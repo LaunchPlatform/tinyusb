@@ -72,7 +72,7 @@ idf_component_register(SRCS ${srcs}
 
 # Try to workaround symbol missing issue
 # ref: https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-guides/build-system.html#advanced-workaround-undefined-symbols
-target_link_libraries(${COMPONENT_LIB} INTERFACE "-u reverse_ops")
+set_property(TARGET ${COMPONENT_LIB} APPEND PROPERTY LINK_INTERFACE_MULTIPLICITY 5)
 target_compile_options(${COMPONENT_LIB} PUBLIC ${compile_options})
 
 # when no builtin class driver is enabled, an uint8_t data compared with `BUILTIN_DRIVER_COUNT` will always be false
